@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/view/template/template.xhtml">
+        <ui:define name="tituloJanela">Produtos - SPTTecH</ui:define>
+        <ui:define name="conteudo">
+            <p:focus for="nome"/>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1"></div>
+                <div class="ui-grid-col-10">
+                    <p:fieldset legend="Gerenciar produtos">                        
+                        
+                        <p:commandLink action="#{produtoMB.voltar()}" immediate="true">
+                        <p:commandButton id="listar_usuarios" action="#{produtoMB.voltar()}" value="Listar" style="margin-left: 10px; margin-top: 10px;"/>                        
+                        </p:commandLink>
+                        <p:commandButton id="cadastrar_usuario" action="#{produtoMB.novo()}"  immediate="true" value="Cadastrar" style="margin-left: 10px; margin-top: 10px;"/>                        
+        
+                    </p:fieldset>                   
+                        
+                <p:fieldset legend="Cadastrar novo produto" style="margin-top: 40px;">
+                <div align="center" style="font-size: 24px;">
+                <br/>
+                <h:panelGrid columns="2" width="40%" rules="groups" columnClasses="formUsuarioNovoLabel,formUsuarioNovoInput" style="float: left;">
+                    
+                <p:outputLabel value="Nome: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="nome" value="#{produtoMB.nome}" placeholder="" required="true" requiredMessage="Digite o nome!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Descrição: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="descricao" value="#{produtoMB.descricao}" placeholder="" required="true" requiredMessage="Digite a descrição!"/>                    
+                </h:panelGrid>
+                <p:outputLabel value="Garantia: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">                    
+                    <p:selectOneMenu class="formUsuarioNovoInputText" id="garantia" value="#{produtoMB.garantia}">                            
+                        <f:selectItem itemLabel="30 Dias" itemValue="30 DIAS"/>
+                        <f:selectItem itemLabel="60 Dias" itemValue="60 DIAS"/>
+                        <f:selectItem itemLabel="90 Dias" itemValue="90 DIAS"/>
+                        <f:selectItem itemLabel="6 Meses" itemValue="6 MESES"/>
+                        <f:selectItem itemLabel="9 Meses" itemValue="9 MESES"/>
+                        <f:selectItem itemLabel="1 Ano" itemValue="1 ANO"/>
+                    </p:selectOneMenu>                    
+                </h:panelGrid>
+                                
+                <h:panelGrid columns="1" width="100%">
+                    <p:commandButton  class="formUsuarioNovoCommandButton" id="confirmar" action="#{produtoMB.gravar()}" value="Cadastrar produto" update="growl"/>
+                </h:panelGrid>
+                </h:panelGrid>        
+                </div>                                      
+                </p:fieldset>
+                </div>
+                <div class="ui-grid-col-1"></div>
+            </div>            
+        </ui:define>
+     </ui:composition>
+</html>
+

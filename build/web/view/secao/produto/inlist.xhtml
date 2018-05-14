@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/view/template/template.xhtml">
+        <ui:define name="tituloJanela">Entradas de produto - SPTTecH</ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1"></div>
+                <div class="ui-grid-col-10">
+                    <p:fieldset legend="Gerenciar produtos">                        
+                        <p:commandButton id="listar_produtos" action="#{produtoMB.voltar()}" value="Listar" style="margin-left: 10px; margin-top: 10px;"/>
+                        <p:commandButton id="cadastrar_produto" action="#{produtoMB.novo()}" value="Cadastrar" style="margin-left: 10px; margin-top: 10px;"/>
+                        <p:commandButton id="entrada_produto" action="#{entradaProdutoMB.novo()}" value="Entrada de produtos" style="margin-left: 10px; margin-top: 10px;"/>
+                    </p:fieldset>
+                    <p:fieldset legend="Lista de entradas para [#{entradaProdutoMB.nomeProduto()}]" style="margin-top: 40px;">
+                        
+                        <p:dataTable id="tabelaResultado" value="#{entradaProdutoMB.entradasProduto}" 
+                                 var="entradaProduto" emptyMessage="Nenhum produto cadastrado" paginator="true" rows="10" rowsPerPageTemplate="5,10,15,30,50,100">
+                        <p:column width="10%" headerText="Quantidade" style="text-align: center;" sortBy="#{entradaProduto.quantidade}" filterBy="#{entradaProduto.quantidade}">
+                            <h:outputText class="estoqueDisponivel" value="#{entradaProduto.quantidade}"/>
+                        </p:column>
+                        <p:column  width="20%" headerText="Valor unitário" style="text-align: center;" sortBy="#{entradaProduto.valorUnitario}" filterBy="#{entradaProduto.valorUnitario}">
+                            <h:outputText value="R$#{entradaProduto.valorUnitario}">
+                                <f:convertNumber minFractionDigits="2"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column width="20%" headerText="Data de entrada" style="text-align: center;" sortBy="#{entradaProduto.dataEntrada}" filterBy="#{entradaProduto.dataEntrada}">
+                            <h:outputFormat value="{0, date, dd/MM/yyyy}">
+                                <f:param value="#{entradaProduto.dataEntrada}" />
+                            </h:outputFormat>
+                        </p:column>                        
+                        <p:column  width="20%" headerText="Fornecedor" style="text-align: center;" sortBy="#{entradaProduto.idFornecedor.nome}" filterBy="#{entradaProduto.idFornecedor.nome}"> 
+                            <h:outputText value="#{entradaProduto.idFornecedor.nome}"/>
+                        </p:column>   
+                        <p:column exportable="false" headerText="Editar" width="10%" style="text-align: center;">
+                            <p:commandButton action="#{entradaProdutoMB.alteracao(entradaProduto.idEntradaProduto)}" icon="ui-icon-pencil"/>
+                        </p:column>
+                    </p:dataTable> 
+                        <h:commandLink id="pdf">
+                        <p:graphicImage name="/images/pdf_icon.png" width="32" height="32"/>
+                           <p:dataExporter type="pdf" target="tabelaResultado" fileName="SPTTecH_EntradasProduto" preProcessor="#{gerarPDF.preProcessPDF}" />
+                    </h:commandLink>
+                    </p:fieldset>
+                </div>
+                <div class="ui-grid-col-1"></div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

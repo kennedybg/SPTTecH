@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/view/template/template.xhtml">
+        <ui:define name="tituloJanela">Modelos - SPTTecH</ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1"></div>
+                <div class="ui-grid-col-10">
+                    <p:fieldset legend="Gerenciar modelos">                        
+                        <p:commandButton id="listar_usuarios" action="#{modeloMB.voltar()}" value="Listar" style="margin-left: 10px; margin-top: 10px;"/>
+                        <p:commandButton id="cadastrar_usuario" action="#{modeloMB.novo()}" value="Cadastrar" style="margin-left: 10px; margin-top: 10px;"/>                        
+                    </p:fieldset>
+                    <p:fieldset legend="Modelos cadastrados" style="margin-top: 40px;">
+                        
+                        <p:dataTable id="tabelaResultado" value="#{modeloMB.modelos}"
+                                 var="modelo" emptyMessage="Nenhum modelo cadastrado" paginator="true" rows="10" rowsPerPageTemplate="5,10,15,30,50,100">
+                        <p:column width="10%" headerText="Código" style="text-align: center;" sortBy="#{modelo.idModelo}" filterBy="#{modelo.idModelo}">
+                            <h:outputText value="#{modelo.idModelo}"/>
+                        </p:column>
+                        <p:column  width="20%" headerText="Nome" style="text-align: center;" sortBy="#{modelo.nome}" filterBy="#{modelo.nome}">
+                            <h:outputText value="#{modelo.nome}"/>
+                        </p:column>
+                        <p:column  width="20%" headerText="Descrição Técnica" style="text-align: center;" sortBy="#{modelo.descricaoTecnica}" filterBy="#{modelo.descricaoTecnica}">
+                            <h:outputText value="#{modelo.descricaoTecnica}"/>
+                        </p:column>
+                        <p:column width="20%" headerText="Tipo de Equipamento" style="text-align: center;">
+                            <h:outputText value="#{equipamentoMB.buscaNomeEquipamento(modelo.tipoEquipamento)}"/>
+                        </p:column>
+                        <p:column exportable="false" headerText="Editar" width="10%" style="text-align: center;">
+                            <p:commandButton action="#{modeloMB.alteracao(modelo.idModelo)}" icon="ui-icon-pencil"/>
+                        </p:column>
+                    </p:dataTable>  
+                        <h:commandLink id="pdf">
+                        <p:graphicImage name="/images/pdf_icon.png" width="32" height="32"/>
+                           <p:dataExporter type="pdf" target="tabelaResultado" fileName="SPTTecH_ModelosCadastrados" preProcessor="#{gerarPDF.preProcessPDF}" />
+                    </h:commandLink>
+                    </p:fieldset>
+                </div>
+                <div class="ui-grid-col-1"></div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

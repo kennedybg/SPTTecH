@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/view/template/template.xhtml">
+        <ui:define name="tituloJanela">Serviços - SPTTecH</ui:define>
+        <ui:define name="conteudo">
+            <p:focus for="descricao"/>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1"></div>
+                <div class="ui-grid-col-10">
+                    <p:fieldset legend="Gerenciar serviços">                        
+                        
+                        <p:commandLink action="#{servicoMB.voltar()}" immediate="true">
+                        <p:commandButton id="listar_usuarios" action="#{servicoMB.voltar()}" value="Listar" style="margin-left: 10px; margin-top: 10px;"/>                        
+                        </p:commandLink>
+                        <p:commandButton id="cadastrar_usuario" action="#{servicoMB.novo()}"  immediate="true" value="Cadastrar" style="margin-left: 10px; margin-top: 10px;"/>                        
+                        <p:commandButton value="Excluir" action="#{servicoMB.excluir()}" immediate="true" update="growl"  style="margin-left: 10px; margin-top: 10px;">
+                            <p:confirm header="Alerta" message="Tem certeza que desejar excluir o registro?" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:confirmDialog closable="false" global="true" showEffect="fade" hideEffect="size">
+                            <p:commandButton value="Tenho Certeza!" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="Cancelar" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </p:fieldset>                   
+                        
+                <p:fieldset legend="Alterar dados do serviço" style="margin-top: 40px;">
+                <div align="center" style="font-size: 24px;">
+                <br/>
+                <h:panelGrid columns="2" width="40%" rules="groups" columnClasses="formUsuarioNovoLabel,formUsuarioNovoInput" style="float: left;">
+                    
+                <p:outputLabel value="Descrição: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="descricao" value="#{servicoMB.descricao}" placeholder="" required="true" requiredMessage="Digite a descrição!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Valor: " style="color: #666666;" />
+                <h:panelGrid columns="2" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="valor" value="#{servicoMB.valor}" placeholder="" required="true" requiredMessage="Digite o valor!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Prazo mínimo: " style="color: #666666;" />
+                <h:panelGrid columns="2" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="prazo_minimo" value="#{servicoMB.prazo_minimo}" placeholder="" required="true" requiredMessage="Digite o prazo mínimo!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Garantia: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">                    
+                    <p:selectOneMenu class="formUsuarioNovoInputText" id="garantia" value="#{servicoMB.garantia}">                            
+                        <f:selectItem itemLabel="30 Dias" itemValue="30 DIAS"/>
+                        <f:selectItem itemLabel="60 Dias" itemValue="60 DIAS"/>
+                        <f:selectItem itemLabel="90 Dias" itemValue="90 DIAS"/>
+                        <f:selectItem itemLabel="6 Meses" itemValue="6 MESES"/>
+                        <f:selectItem itemLabel="9 Meses" itemValue="9 MESES"/>
+                        <f:selectItem itemLabel="1 Ano" itemValue="1 ANO"/>
+                    </p:selectOneMenu>                    
+                </h:panelGrid>
+                
+                <h:panelGrid columns="1" width="100%">
+                    <p:commandButton  class="formUsuarioNovoCommandButton" id="confirmar" action="#{servicoMB.alterar()}" value="Atualizar dados" update="growl"/>
+                </h:panelGrid>
+                </h:panelGrid>        
+                </div>                                      
+                </p:fieldset>
+                </div>
+                <div class="ui-grid-col-1"></div>
+            </div>            
+        </ui:define>
+     </ui:composition>
+</html>
+

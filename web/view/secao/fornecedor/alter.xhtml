@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/view/template/template.xhtml">
+        <ui:define name="tituloJanela">Fornecedores - SPTTecH</ui:define>
+        <ui:define name="conteudo">
+            <p:focus for="cnpj"/>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1"></div>
+                <div class="ui-grid-col-10">
+                    <p:fieldset legend="Gerenciar fornecedores">                        
+                        
+                        <p:commandLink action="#{fornecedorMB.voltar()}" immediate="true">
+                        <p:commandButton id="listar_usuarios" action="#{fornecedorMB.voltar()}" value="Listar" style="margin-left: 10px; margin-top: 10px;"/>                        
+                        </p:commandLink>
+                        <p:commandButton id="cadastrar_usuario" action="#{fornecedorMB.novo()}"  immediate="true" value="Cadastrar" style="margin-left: 10px; margin-top: 10px;"/>                        
+
+                        <p:commandButton value="Excluir" action="#{fornecedorMB.excluir()}" immediate="true" update="growl"  style="margin-left: 10px; margin-top: 10px;">
+                            <p:confirm header="Alerta" message="Tem certeza que desejar excluir o registro?" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:confirmDialog closable="false" global="true" showEffect="fade" hideEffect="size">
+                            <p:commandButton value="Tenho Certeza!" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="Cancelar" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                        
+                    </p:fieldset>                   
+                        
+                <p:fieldset legend="Alterar dados do fornecedor" style="margin-top: 40px;">
+                <div align="center" style="font-size: 24px;">
+                <br/>
+                <h:panelGrid columns="2" width="40%" rules="groups" columnClasses="formUsuarioNovoLabel,formUsuarioNovoInput" style="float: left;">
+                                     
+                <p:outputLabel value="CNPJ: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputMask mask="99.999.999/9999-99" class="formUsuarioNovoInputText" id="cnpj" value="#{fornecedorMB.cnpj}" placeholder="" required="true" requiredMessage="Digite o cnpj!"/>                    
+                </h:panelGrid>
+                    
+                <p:outputLabel value="Nome: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="nome" value="#{fornecedorMB.nome}" placeholder="" required="true" requiredMessage="Digite o nome!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Telefone: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="telefone" value="#{fornecedorMB.telefone}" placeholder="" required="true" requiredMessage="Digite o telefone!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Endereço: " style="color: #666666;" />
+                <h:panelGrid columns="2" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="endereco" value="#{fornecedorMB.endereco}" placeholder="" required="true" requiredMessage="Digite o endereco!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Número: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" style="width: 30%;" id="numero" value="#{fornecedorMB.numero}" placeholder="" required="true" requiredMessage="Digite o número!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Bairro: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="bairro" value="#{fornecedorMB.bairro}" placeholder="" required="true" requiredMessage="Digite o bairro!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Cidade: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="cidade" value="#{fornecedorMB.cidade}" placeholder="" required="true" requiredMessage="Digite a cidade!"/>
+                </h:panelGrid>
+                
+                <p:outputLabel value="Estado: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    
+                    <p:selectOneMenu class="formUsuarioNovoInputText" id="estado"  value="#{fornecedorMB.estado}">                            
+                            <f:selectItem itemLabel="Minas Gerais" itemValue="0"/>
+                            <f:selectItem itemLabel="São Paulo" itemValue="1"/>                            
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <p:outputLabel value="País: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    
+                    <p:selectOneMenu class="formUsuarioNovoInputText" id="pais"  value="#{fornecedorMB.pais}">                            
+                            <f:selectItem itemLabel="Brazil" itemValue="0"/>
+                            <f:selectItem itemLabel="Canadá" itemValue="1"/>                            
+                            <f:selectItem itemLabel="Belgica" itemValue="2"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                
+                <p:outputLabel value="Email: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="email" value="#{fornecedorMB.email}" placeholder="" required="true" requiredMessage="Digite o email!"/>
+                </h:panelGrid>
+                
+                <p:outputLabel value="Site: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="site" value="#{fornecedorMB.site}" placeholder="" required="true" requiredMessage="Digite o site!"/>
+                </h:panelGrid>
+                
+                <h:panelGrid columns="1" width="100%">
+                    <p:commandButton  class="formUsuarioNovoCommandButton" id="confirmar" action="#{fornecedorMB.alterar()}" value="Atualizar Dados" update="growl"/>
+                </h:panelGrid>
+                </h:panelGrid>        
+                </div>                                      
+                </p:fieldset>
+                </div>
+                <div class="ui-grid-col-1"></div>
+            </div>            
+        </ui:define>
+     </ui:composition>
+</html>
+

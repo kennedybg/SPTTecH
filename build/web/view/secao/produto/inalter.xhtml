@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/view/template/template.xhtml">
+        <ui:define name="tituloJanela">Entrada de produtos - SPTTecH</ui:define>
+        <ui:define name="conteudo">
+            <p:focus for="quantidade"/>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1"></div>
+                <div class="ui-grid-col-10">
+                    <p:fieldset legend="Gerenciar entrada de produtos">                        
+                        
+                        <p:commandLink action="#{entradaProdutoMB.voltar()}" immediate="true">
+                        <p:commandButton id="listar_entrada" action="#{entradaProdutoMB.voltar()}" value="Listar" style="margin-left: 10px; margin-top: 10px;"/>                        
+                        </p:commandLink>
+                        <p:commandButton id="cadastrar_entrada" action="#{produtoMB.novo()}"  immediate="true" value="Cadastrar" style="margin-left: 10px; margin-top: 10px;"/>                        
+        
+                        <p:commandButton value="Excluir entrada" action="#{entradaProdutoMB.excluir()}" immediate="true" update="growl"  style="margin-left: 10px; margin-top: 10px;">
+                            <p:confirm header="Alerta" message="Tem certeza que desejar excluir o registro?" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:confirmDialog closable="false" global="true" showEffect="fade" hideEffect="size">
+                            <p:commandButton value="Tenho Certeza!" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="Cancelar" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </p:fieldset>                   
+                        
+                <p:fieldset legend="Alterando entrada de [#{entradaProdutoMB.nomeProduto()}]" style="margin-top: 40px;">
+                <div align="center" style="font-size: 24px;">
+                <br/>
+                <h:panelGrid columns="2" width="40%" rules="groups" columnClasses="formUsuarioNovoLabel,formUsuarioNovoInput" style="float: left;">
+                
+                <p:outputLabel value="Produto: "  style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:outputLabel value="#{entradaProdutoMB.nomeProduto()}"  style="color: #666666;" />                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Quantidade: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:spinner id="quantidade" value="#{entradaProdutoMB.quantidade}" required="true" requiredMessage="Informe a quantidade!" />
+                </h:panelGrid>
+                
+                <p:outputLabel value="Valor unitário: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" style="width: 35%;" id="valorUnitario" value="#{entradaProdutoMB.valorUnitario}" placeholder="" required="true" requiredMessage="Digite o valor unitário!"/>                    
+                </h:panelGrid>
+                
+                <h:outputText value="Data entrada:" style="color: #666666;"/>
+                <h:panelGrid columns="1" width="100%">
+                    <p:calendar class="formUsuarioNovoInputText" id="dataEntrada" value="#{entradaProdutoMB.dataEntrada}" pattern="dd/MM/yyyy"></p:calendar>
+                </h:panelGrid>
+                                
+                <h:panelGrid columns="1" width="100%">
+                    <p:commandButton  class="formUsuarioNovoCommandButton" id="confirmar" action="#{entradaProdutoMB.alterar()}" value="Atualizar entrada" update="growl"/>
+                </h:panelGrid>
+                </h:panelGrid>        
+                </div>                                      
+                </p:fieldset>
+                </div>
+                <div class="ui-grid-col-1"></div>
+            </div>            
+        </ui:define>
+     </ui:composition>
+</html>
+

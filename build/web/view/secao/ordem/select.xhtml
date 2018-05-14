@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/view/template/template.xhtml">
+        <ui:define name="tituloJanela">Ordem de Serviço - SPTTecH</ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-grid-responsive">
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-10"></div>
+               
+                    <div class="ui-grid-col-1"></div>
+                </div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-1"></div>
+                    <div class="ui-grid-col-10">
+                    <p:fieldset legend="Gerenciar ordens">                        
+                         <p:commandButton id="listar_produtos" action="#{ordemMB.listarTodas()}" value="Listar recentes" style="margin-left: 10px; margin-top: 10px;"/>
+                        <p:commandButton id="cadastrar_produto" action="#{ordemMB.novo()}" value="Nova ordem" style="margin-left: 10px; margin-top: 10px;"/>                        
+                    </p:fieldset>
+                        <p:fieldset legend="Listar" style="margin-top: 20px;">
+                            <br/>
+                            <div class="ui-grid-responsive">
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-2">
+                                        <h:outputText value="Data Inicial:"/><br/>
+                                        <p:calendar id="dataInicial" value="#{ordemMB.dataInicial}"
+                                                    pattern="dd/MM/yyyy"                                                    
+                                                    style="width: 75%;" styleClass="calendar_filtros" locale="pt_BR">
+                                            <p:ajax event="dateSelect" update="dataFinal"/>
+                                        </p:calendar>
+                                    </div>
+                                    <div class="ui-grid-col-1"></div>
+                                    <div class="ui-grid-col-2">
+                                        <h:outputText value="Data Final:"/><br/>
+                                        <p:calendar id="dataFinal" value="#{ordemMB.dataFinal}"
+                                                    pattern="dd/MM/yyyy" 
+                                                    style="width: 75%;" styleClass="calendar_filtros"  locale="pt_BR"
+                                                    mindate="#{ordemServicoMB.dataInicial}"/>
+                                    </div>
+                                    <div class="ui-grid-col-1"></div>
+                                    <div class="ui-grid-col-4">
+                                        <h:outputText value="Cliente:"/><br/>
+                                        <p:selectOneMenu id="cliente" value="#{ordemMB.idCliente}"
+                                                         filter="true" filterMatchMode="startsWith"
+                                                         style="width: 80%;">
+                                            
+                                            <p:ajax listener="#{ordemMB.pesquisarPorFiltro()}" update="growl" />
+                                            <f:selectItem noSelectionOption="true"/>
+                                            <f:selectItems value="#{clienteMB.clientes}" var="cliente"
+                                                           itemLabel="#{cliente.nome}" itemValue="#{cliente.idCliente}"/>
+                                        </p:selectOneMenu>                                        
+                                    </div>                                    
+                                    <div class="ui-grid-col-1">
+                                        <p:commandLink action="#{ordemMB.pesquisarPorFiltro()}" update="growl">
+                                            <h:graphicImage value="/resources/images/search.png" title="Consultar"
+                                                        width="48" height="48"/>
+                                        </p:commandLink>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                        </p:fieldset>
+                            
+                    </div>
+                    <div class="ui-grid-col-1"></div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/view/template/template.xhtml">
+        <ui:define name="tituloJanela">Relatórios - Musig</ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1"></div>
+                <div class="ui-grid-col-10"> 
+                    <p:fieldset legend="Filtrar">                        
+                        <h:panelGrid columns="1" width="50%">
+                            <h:panelGrid columns="4" width="100%">                            
+                                <p:outputLabel value="Cliente: " style="color: #666666;" />                                
+                                <p:selectOneMenu class="formUsuarioNovoInputText" id="tcliente" value="#{ordemMB.clienteRel}">                            
+                                    <f:selectItems value="#{clienteMB.clientes}" var="cliente" itemLabel="#{cliente.nome}" itemValue="#{cliente.idCliente}"/>
+                                </p:selectOneMenu>                                                                
+                                <h:commandLink target="_blank" id="relClienteOrden" action="#{ordemMB.gerarRelatorioCliente()}">
+                                    <p:commandButton id="cli_ordens" value="Ordens" style="margin-left: 30px;"/>
+                                </h:commandLink>                                
+                                
+                                <h:commandLink target="_blank" id="relClienteVendas" action="#{ordemMB.gerarRelatorioCliente()}">
+                                    <p:commandButton id="cli_vendas" value="Vendas" style="margin-left: 30px;"/>
+                                </h:commandLink>                               
+                            </h:panelGrid>
+                            
+                            
+                            <h:panelGrid columns="4" width="100%" style="margin-top: 20px;">                            
+                                <p:outputLabel value="Usuário: " style="color: #666666;" />                                
+                                <p:selectOneMenu class="formUsuarioNovoInputText" id="tsuario" value="#{ordemMB.usuarioRel}">                            
+                                    <f:selectItems value="#{usuarioMB.usuarios}" var="usuario" itemLabel="#{usuario.nome}" itemValue="#{usuario.idUsuario}"/>
+                                </p:selectOneMenu>                                
+                                <h:commandLink target="_blank" id="relUsuarioOrdens" action="#{ordemMB.gerarRelatorioUsuario()}">
+                                    <p:commandButton id="user_ordens" value="Ordens" style="margin-left: 30px;"/>
+                                </h:commandLink>                                
+                                
+                                <h:commandLink target="_blank" id="relUsuarioVendas" action="#{ordemMB.gerarRelatorioUsuario()}">
+                                    <p:commandButton id="user_vendas" value="Vendas" style="margin-left: 30px;"/>
+                                </h:commandLink>
+                            </h:panelGrid>
+                            
+                            <h:panelGrid columns="4" width="100%" style="margin-top: 20px;">                            
+                                <p:outputLabel value="Produto: " style="color: #666666;" />                                
+                                <p:selectOneMenu class="formUsuarioNovoInputText" id="tproduto" value="#{clienteMB.nome}">                            
+                                    <f:selectItems value="#{produtoMB.produtos}" var="produto" itemLabel="#{produto.nome}" itemValue="#{produto.idProduto}"/>
+                                </p:selectOneMenu>                                
+                                <p:commandButton id="prod_vendas" action="#{clienteMB.voltar()}" value="Vendas" style="margin-left: 30px;"/>                                
+                                <p:commandButton id="prod_entradas" action="#{clienteMB.voltar()}" value="Entradas"/>                                
+                            </h:panelGrid>                           
+                     </h:panelGrid>     
+                    </p:fieldset>                      
+                </div>
+                <div class="ui-grid-col-1"></div>
+            </div>
+        </ui:define>
+    </ui:composition>>
+</html>

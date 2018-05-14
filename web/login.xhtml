@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>SPTTecH</title>
+        <link rel="shortcut icon" type="image/x-icon" 
+              href="#{request.contextPath}/resources/images/iconemusig.png"/>
+        <link rel="stylesheet" type="text/css" media="screen"
+              href="#{request.contextPath}/resources/css/login.css"/>
+    </h:head>
+    <h:body>
+        <div id="cabecalho" align="left" class="cabecalho">
+            <h:outputText value="Autenticação" styleClass="tituloCabecalho"/>        
+        </div>
+        <h:form>
+            <p:growl id="growl"/>
+            
+                <p:dialog showHeader="false" header="SPTTecH" id="dialogLogin"
+                          resizable="false" closable="false" draggable="false"
+                          modal="false" showEffect="fade" visible="true"
+                          style="border-radius: 20px;" responsive="true">
+                    <div align="center" style="font-size: 24px;">
+                        <br/>
+                        <h:outputText value="Usuário: " style="color: #666666;" />
+                        <p:inputText id="loginTemp" value="#{redqueenMB.loginTemp}" placeholder=""
+                                     required="true" requiredMessage="Digite o usuário!" style="float: right;"/><br/><br/>
+                        <h:outputText class="caixaEntrada" value="Senha: " style="color: #666666;"/>
+                        <p:password id="senhaTemp" value="#{redqueenMB.senhaTemp}" placeholder=""
+                                     required="true" requiredMessage="Digite a senha!" style="float: right;"/><br/><br/>
+                        <p:commandButton id="confirmar" action="#{redqueenMB.autenticacao()}" value="Entrar"
+                                         update="growl" style="float: right; width: 50%; margin-top: 2px;"/>
+                    </div>
+                </p:dialog>
+        </h:form>
+        <div id="rodape" align="center" class="rodape">
+           <h:outputText value="SPTTecH versão 1.0" styleClass="tituloRodape"/>
+        </div>
+    </h:body>
+</html>
+

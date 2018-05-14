@@ -1,0 +1,48 @@
+body {
+    
+    background-image: url('../images/LogoMusig.png');    
+    background: #211d21;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+*{
+    margin: 0;
+    padding: 0;    
+}
+
+.cabecalho{
+    width: 100%;
+    background: #ab251b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tituloCabecalho{
+    font: 16px Verdana,Geneva sans-serif;
+    height: 20px;
+    font-weight: bold;
+    color: white;
+    margin-left: 20px;      
+}
+
+.rodape{
+    width: 100%;
+    background: #ab251b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position:absolute;
+    bottom:0;
+}
+
+.tituloRodape{
+    font: 16px Verdana,Geneva sans-serif;
+    height: 20px;
+    font-weight: bold;
+    color: white;
+    margin-left: 20px;    
+}
+.rotulo {
+    
+    float: right;
+}

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+        
+    <p:tabMenu styleClass="barraMenu" activeIndex="#{param.i}">        
+        <p:menuitem outcome="/index.xhtml" value="Timeline" icon="ui-icon-home">
+            <f:param name="i" value="0" />
+        </p:menuitem> 
+        <p:menuitem outcome="/view/secao/usuario/list.xhtml" value="Usuários" icon="ui-icon-person">
+            <f:param name="i" value="1" />
+        </p:menuitem>
+        <p:menuitem outcome="/view/secao/equipamento/list.xhtml" value="Equipamento" icon=" ui-icon-folder-open">
+            <f:param name="i" value="2" />
+        </p:menuitem>
+        <p:menuitem outcome="/view/secao/modelo/list.xhtml" value="Modelo" icon=" ui-icon-folder-open">
+            <f:param name="i" value="3" />
+        </p:menuitem>
+        <p:menuitem outcome="/view/secao/cliente/list.xhtml" value="Clientes" icon="ui-icon-person">
+            <f:param name="i" value="4" />
+        </p:menuitem>
+        <p:menuitem outcome="/view/secao/servico/list.xhtml" value="Serviços" icon=" ui-icon-gear">
+            <f:param name="i" value="5" />
+        </p:menuitem>
+        <p:menuitem outcome="/view/secao/ordem/select.xhtml" value="Ordem de serviço" icon="ui-icon-wrench">
+            <f:param name="i" value="6" />
+        </p:menuitem>
+        <p:menuitem outcome="/view/info/relatorios.xhtml" value="Relatórios" icon="ui-icon-script">
+            <f:param name="i" value="7" />
+        </p:menuitem>
+        <p:menuitem outcome="/view/secao/produto/list.xhtml" value="Produtos" icon="ui-icon-cart">
+            <f:param name="i" value="8" />
+        </p:menuitem>
+        <p:menuitem outcome="/view/secao/fornecedor/list.xhtml" value="Fornecedor" icon="ui-icon-cart">
+            <f:param name="i" value="9" />
+        </p:menuitem> 
+        <p:menuitem outcome="/view/secao/venda/dav.xhtml" onclick="#{vendaMB.novo()}" value="Venda" icon="ui-icon-cart">
+            <f:param name="i" value="10" />
+        </p:menuitem>
+</p:tabMenu>
+
+</html>

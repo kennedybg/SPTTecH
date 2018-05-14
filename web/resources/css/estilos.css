@@ -1,0 +1,170 @@
+body {
+    
+    background-image: url('../images/LogoMusig.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+*{
+    margin: 0;
+    padding: 0;
+    font: 12px Verdana,Geneva sans-serif;    
+}
+
+.cabecalho{
+    width: 100%;
+    background: #ab251b;
+    padding-top: 10px;
+    padding-bottom: 10px;        
+    
+}
+
+.tituloCabecalho{
+    font: 12px Verdana,Geneva sans-serif; 
+    height: 20px;
+    font-weight: bold;
+    color: white;
+    margin-left: 20px;      
+}
+
+.rodape{
+    width: 100%;
+    background: #ab251b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position:absolute;
+    bottom:0;
+}
+
+.tituloRodape{
+    font: 12px Verdana,Geneva sans-serif; 
+    height: 20px;
+    font-weight: bold;
+    color: white;
+    margin-left: 20px;      
+}
+
+.calendar_filtros .ui-inputfield  {  
+    width: 75% !important;
+}
+
+.submenu_relatorio_secao {
+    
+    width: 220px;    
+    color: #000000;     
+}
+.submenu_relatorio_secao_menuitem {
+    
+    width: 180px;    
+    color: #999999;    
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#painelLogin {
+    
+    width: 70%;
+    height: 60%;
+    border: 1px solid #000000;
+}
+
+.formUsuarioNovoLabel {
+    
+    width: 25%;
+}
+.formUsuarioNovoInput {
+    width: 75%;    
+}
+
+.formUsuarioNovoInputText {
+    width: 100%;
+}
+
+.formUsuarioNovoLabelEndereco {
+    
+    width: 25%;
+}
+
+.formUsuarioNovoInputTextEndereco {
+    width: 50%;
+}
+
+.formUsuarioNovoCommandButton {
+    
+    margin-top: 40px;
+    width: 100%;    
+}
+
+.estoqueIndisponivel {
+    color: #c20000;
+    width: 90%;
+    font-weight: bold;
+}
+
+.estoqueDisponivel {
+    color: #00a642;
+    width: 90%;
+    font-weight: bold;
+}
+
+.vendaInputText {
+    
+    font-size: 28px;    
+      width: 100%;
+}
+
+.formUsuarioNovoButton {
+    width: 25%;    
+}
+
+.timelinePanel
+{
+        
+}
+
+.timelineDataGrid .ui-widget-content
+{
+    border: none !important;   
+}
+
+.timelineOutputNote {
+    margin-left: 10px;    
+    color: #4a67c1;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.timelineOutputInfo {
+    margin-left: 10px;    
+    color: #00a642;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.timelineOutputAlert {
+    margin-left: 10px;    
+    color: #eeb400;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.timelineOutputWarning {
+    margin-left: 10px;    
+    color: #c20000;
+    font-weight: bold;
+    font-size: 12px;
+}
+.timelineExibeData {
+    width: 30%;
+    
+}
+.timelineExibeRegistro {
+    width: 70%;        
+}
+
+.ui-widget-header {
+        
+}
+.ui-tabmenu .ui-tabmenuitem a:hover{
+
+}

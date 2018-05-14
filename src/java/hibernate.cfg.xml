@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bd_spttech</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.jdbc.use_get_generated_keys">true</property>
+    <mapping class="model.Cliente"/>
+    <mapping class="model.EntradaProduto"/>
+    <mapping class="model.Equipamento"/>
+    <mapping class="model.Estoque"/>
+    <mapping class="model.Fornecedor"/>
+    <mapping class="model.Modelo"/>
+    <mapping class="model.Ordem"/>
+    <mapping class="model.Produto"/>    
+    <mapping class="model.SaidaProduto"/>
+    <mapping class="model.Servico"/>
+    <mapping class="model.ServicoPrestado"/>    
+    <mapping class="model.Timeline"/>
+    <mapping class="model.Usuario"/>
+    <mapping class="model.Venda"/>
+  </session-factory>
+</hibernate-configuration>

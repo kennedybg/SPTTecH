@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/view/template/template.xhtml">
+        <ui:define name="tituloJanela">Usuários - Musig</ui:define>
+        <ui:define name="conteudo">
+            <p:focus for="cpf"/>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-1"></div>
+                <div class="ui-grid-col-10">
+                    <p:fieldset legend="Gerenciar usuários">                        
+                        
+                        <p:commandLink action="#{usuarioMB.voltar()}" immediate="true">
+                        <p:commandButton id="listar_usuarios" action="#{usuarioMB.voltar()}" value="Listar" style="margin-left: 10px; margin-top: 10px;"/>                        
+                        </p:commandLink>
+                        <p:commandButton id="cadastrar_usuario" action="#{usuarioMB.novo()}" value="Cadastrar" style="margin-left: 10px; margin-top: 10px;"/>                                                
+                    </p:fieldset>                   
+                        
+                <p:fieldset legend="Cadastrar novo usuário do sistema" style="margin-top: 40px;">
+                <div align="center" style="font-size: 24px;">
+                <br/>
+                <h:panelGrid columns="2" width="40%" rules="groups" columnClasses="formUsuarioNovoLabel,formUsuarioNovoInput" style="float: left;">
+                 
+                    
+                <p:outputLabel value="CPF: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputMask mask="999.999.999-99" class="formUsuarioNovoInputText" id="cpf" value="#{usuarioMB.cpf}" placeholder="" required="true" requiredMessage="Digite o cpf!"/>
+                </h:panelGrid>
+                    
+                <p:outputLabel value="Nome: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="nome" value="#{usuarioMB.nome}" placeholder="" required="true" requiredMessage="Digite o nome!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Telefone: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputMask mask="(99)9999-9999" class="formUsuarioNovoInputText" id="telefone" value="#{usuarioMB.telefone}" placeholder="" required="true" requiredMessage="Digite o telefone!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Endereço: " style="color: #666666;" />
+                <h:panelGrid columns="2" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="endereco" value="#{usuarioMB.endereco}" placeholder="" required="true" requiredMessage="Digite o endereco!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Número: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" style="width: 20%;" id="numero" value="#{usuarioMB.numero}" placeholder="" required="true" requiredMessage="Digite o número!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Bairro: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" style="width: 20%;" id="bairro" value="#{usuarioMB.bairro}" placeholder="" required="true" requiredMessage="Digite o bairro!"/>                    
+                </h:panelGrid>
+                
+                <p:outputLabel value="Usuário: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    <p:inputText class="formUsuarioNovoInputText" id="login" value="#{usuarioMB.login}" placeholder="" required="true" requiredMessage="Digite o usuário!"/>
+                </h:panelGrid>
+                
+                <p:outputLabel class="caixaEntrada" value="Senha: " style="color: #666666;"/>
+                <h:panelGrid columns="3" width="100%">
+                    <p:password match="senha2" class="formUsuarioNovoInputText" style="width: 90%;" id="senha" value="#{usuarioMB.senha}" placeholder="" required="true" requiredMessage="Digite a senha!"/>
+                    <p:outputLabel value="Confirmar: " style="color: #666666;"/>
+                    <p:password class="formUsuarioNovoInputText" style="width: 100%;" id="senha2" value="#{usuarioMB.senha}" placeholder="" required="true" requiredMessage="Confirme a senha!"/>
+                </h:panelGrid>
+                <p:outputLabel value="Nivel de acesso: " style="color: #666666;" />
+                <h:panelGrid columns="1" width="100%">
+                    
+                    <p:selectOneMenu class="formUsuarioNovoInputText" id="nivel_acesso" value="#{usuarioMB.nivel_acesso}">                            
+                            <f:selectItem itemLabel="Nível Técnico" itemValue="tecnico"/>
+                            <f:selectItem itemLabel="Nível Administrador" itemValue="administrador"/>
+                    </p:selectOneMenu>                    
+                    
+                </h:panelGrid>
+                <h:panelGrid columns="1" width="100%">
+                    <p:commandButton  class="formUsuarioNovoCommandButton" id="confirmar" action="#{usuarioMB.gravar()}" value="Cadastrar usuário" update="growl"/>
+                </h:panelGrid>
+                </h:panelGrid>        
+                </div>                                      
+                </p:fieldset>
+                </div>
+                <div class="ui-grid-col-1"></div>
+            </div>            
+        </ui:define>
+     </ui:composition>
+</html>
+
